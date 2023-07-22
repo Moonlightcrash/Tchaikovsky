@@ -1,10 +1,12 @@
 import discord
+import os
 from discord.ext import commands
-from config import API_TOKEN
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def run_discord_bot():
-    intents = discord.Intents.default() # Подключаем "Разрешения"
+    intents = discord.Intents.default()  # Подключаем "Разрешения"
     intents.message_content = True
 
     # Задаём префикс и интенты
@@ -16,4 +18,4 @@ def run_discord_bot():
     async def ping(ctx):
         await ctx.send('pong')
 
-    bot.run(API_TOKEN)
+    bot.run(os.getenv("API_TOKEN"))
